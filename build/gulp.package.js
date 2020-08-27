@@ -13,7 +13,7 @@ const getTargetOSNodeVersion = () => {
   if (process.argv.find(x => x.toLowerCase() === '--win32')) {
     return 'node10-win32-x64'
   } else if (process.argv.find(x => x.toLowerCase() === '--linux')) {
-    return 'node10-linux-x64'
+    return 'node10.21-linux-x64'
   } else {
     return 'node10-macos-x64'
   }
