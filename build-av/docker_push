@@ -1,4 +1,4 @@
 #!/bin/bash
 docker build -f build-av/Dockerfile out/binaries/ -t ayudantevirtual/botpress:$TRAVIS_TAG
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push ayudantevirtual/ayudante-virtual:$TRAVIS_TAG
+docker push ayudantevirtual/botpress:$TRAVIS_TAG
