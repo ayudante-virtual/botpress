@@ -9,6 +9,13 @@ services:
 
 cache: yarn
 
+git:
+  submodules: false
+
+before_install:
+  - sed -i 's/git@github.com:/git:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive || true
+
 install:
   - yarn
 
@@ -22,3 +29,9 @@ deploy:
   script: bash build-av/docker_push
   on:
     tags: true
+
+env:
+  global:
+    - NODE_OPTIONS="--max-old-space-size=4096"
+    - secure: MhgogXzwaZdIq/AgPcQx7QLaHRA4RLSI2+KESPjU8TGj67pSo3xMD8psLV3coAc9alTu+oI4LfRftngs5zAv4EeHe0EL8etNE979Qmt8Tyb9NzGYAS6oLRk9vGj+qooY5HB3NBqS2/VsETRWYjY0bI50VVWDnSZPtgBxGBqLUHE9+4IlLLdnXry8tSNThoWSIy+lvKhrPCSD8SyJHGzgG6dXr28DLxk97bGzrXmK+nQvEZ+wdlB/lS0WJ7mU6LlAigHMpjxtTxNxXqUD+KIilR+a9qQ157Gkzn6WhsMTiIUQS3BsEeuaCjQ2w00Nx2CVbUByJ9dO873jMiFbn4GG81iEq9GkKQ7dk+5goXj7SFr2fAtXQ3dBFe7W3bEgi7mDj35CDSHOLiVvzfURvKk6jQHMYQ9B4ChkHdSZ958kLaXLCcuo84MyN93OIxzbJ3EfItWnzCO6TXeA+FPcNRvjwZIDs1MZfm0I0vcswx5UPBy4G9rS3IOPrTSQGaiBADbBavdc/LQLqhW40tHiSEl6rghN+0iLgy9hSGvLtd0ew6A1csEMuq9fI8pGEsa0CfDiY1/hYJqFa5Z56JMeq7lbI1h5tWZ02yYqLgWpuHNvI5jKWtMFwcHCKD2T/ZaphG4k5Dz9F7oPCelpqtLDk93TRHEi3zIKVFKjwJI1/9yEw7o=
+    - secure: sd6kOEhe3SbTCERPXBuPDG2VbFS3z3IVOGWh1+TJNBnTQ7+1OqtOB9WrYpQd3I2JXfZ6e0lM/dkG/fRKKIezGBF4sFpbUmucmCREUlmtwPQZNOxCR58/CbWHZD2GPX/MaKJTjUTOBAkTeTdDgD1qPmxhlTdTqsy4yYU1D4r3EEZvlcRi6OIesx2MayrbLeeRe2s0nRBSqFqq90GUL15QLfc366pwI3e8N40Oy6KlyWbulrqAFZsORHfbfbStwV0BYsE+rtBEszCUvicY8gwbaIc/tn8lswdZHQNktiq4PR8kVkJQA69JckdYwsgdya3SDSXC84aJy65FzzfT3+2UCJxHHvxU2cx92TldevRwvpow9oDXg76pJZNXOZVXQMa12GESQ9W7RTF3Z3h+h1Iw1nb97SceSjrIF0KmngCAAGRdLCAP+2y5AwxTaQCvbw4dTvs/deQtneblSrXbemCvS6XbORNuhm6SgDUaeXFR8XRFsI1Q+cQUPiCYhYhMVZucImENR5ek6QgfFeI99Pd/962/6EEWszewH64MaRnbSIDr77LxLw8QGsBrFTmECCNpKtCoqFH1hUUFHNmNBX4OBsV8GAXJoDzfPowbgsB/6ZnaNmpvLt2H1SHycdy/T8H/GeA53Ms0kM/byKp2y6XVqT0EfNxWqyvjaDS3bsES6rA=

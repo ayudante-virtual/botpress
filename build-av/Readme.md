@@ -1,4 +1,6 @@
-# Creando una imagen para el ayudante virtual
+## Creando una imagen para el ayudante virtual
+
+[![Build Status](https://travis-ci.com/ayudante-virtual/botpress.svg?branch=master)](https://travis-ci.com/ayudante-virtual/botpress)
 
 1. Instalar las dependencias:
 
