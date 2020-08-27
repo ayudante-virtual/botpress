@@ -1,0 +1,24 @@
+dist: xenial
+os: linux
+language: node_js
+node_js:
+  - 10
+
+services:
+  - docker
+
+cache: yarn
+
+install:
+  - yarn
+
+script:
+  - yarn build
+  - yarn package --linux
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash build-av/docker_push
+  on:
+    tags: true
